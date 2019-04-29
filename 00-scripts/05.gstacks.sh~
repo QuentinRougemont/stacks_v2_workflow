@@ -27,8 +27,6 @@ fi
 # IMPORTANT: RTFM !
 # Option For both modes:
 I="-I ./04-bam_files/"   #folder with bam
-S="-S .R1.bam"           #suffix (by default == ".bam")
-B="-B "                  #input BAM files
 M="-M ${POP_MAP}"        #path to a population map giving the list of samples
 O="-O ${OUTFOLDER} "       #output directory (default: none with -B; with -P same as the input directory)
 t="-t 8"                 #--threads — number of threads to use (default: 1)
