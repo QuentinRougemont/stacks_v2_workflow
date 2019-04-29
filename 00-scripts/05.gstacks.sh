@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #script to run gstacks by Q. Rougemont
-#LAST UPDATE: 15-04-2019
-:q
+#LAST UPDATE: 29-04-2019
 
 #GENERAL SETTINGS:
-TIMESTAMP="$(date +%Y-%m-%d_%Hh%Mm%Ss)
-SCRIPT="$0
+TIMESTAMP="$(date +%Y-%m-%d_%Hh%Mm%Ss)"
+SCRIPT="$0"
 NAME=$(basename $0)
 LOG_FOLDER="666-log"
 INFO_FILES="01-sample_info"
@@ -18,7 +17,7 @@ cp $POP_MAP $LOG_FOLDER/"$TIMESTAMP"_"$POP_MAP"
 #CREATE DIR 
 OUTFOLDER="05_gstacks"
 
-if [ ! -d "${OUTFOLDER}" ]
+if [ ! -d "${OUTFOLDER}" ]; then
     echo "creating output dir"
     mkdir "${OUTFOLDER}"
 fi
@@ -47,13 +46,13 @@ rmpc="--rm-pcr-duplicates"  # remove read pairs of the same insert length (impli
 #Advanced options: (Reference-based mode)
 mapq="--min-mapq 20"                           #minimum PHRED-scaled mapping quality to consider a read (default: 10)
 maxcl="--max-clipped 0.2"                      #maximum soft-clipping level, in fraction of read length (default: 0.20)
-maxin="--max-insert-len"                       #maximum allowed sequencing insert length (default: 1000)
+maxin="--max-insert-len 1000"                  #maximum allowed sequencing insert length (default: 1000)
 d="--details"                                  # write a heavier output
 #pcoo="--phasing-cooccurrences-thr-range 1,2"  # range of edge coverage thresholds to iterate over when building the graph of allele cooccurrences for SNP phasing (default: 1,2)
 #phet="--phasing-dont-prune-hets"              #don't try to ignore dubious heterozygote genotypes during phasing
 
 
-gstaks $I $M $O $t $m $v $gt $km $mkm $rmu $rmpc \
+gstacks $I $M $O $t $m $v $gt $km $mkm $rmu $rmpc \
     $mapq $maxcl $maxin $d $pcoo $phet 2>&1 |tee 666-log/"$TIMESTAMP"_gstacks.log
 
 exit
