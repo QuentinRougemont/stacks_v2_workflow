@@ -12,7 +12,7 @@ INFO_FILES="01-sample_info"
 POP_MAP="${INFO_FILES}/population_map.txt"
 
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
-cp $POP_MAP $LOG_FOLDER/"$TIMESTAMP"_"$POP_MAP"
+cp $POP_MAP $LOG_FOLDER/"$TIMESTAMP"_population_map.txt
 
 #CREATE DIR 
 OUTFOLDER="05_gstacks"
