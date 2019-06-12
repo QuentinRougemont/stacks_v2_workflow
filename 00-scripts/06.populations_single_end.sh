@@ -16,7 +16,6 @@ POP_MAP="${INFO_FILES}/population_map.txt"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 cp $POP_MAP $LOG_FOLDER/"$TIMESTAMP"_"$POP_MAP"
 
-
 # IMPORTANT: make sure your read about the available options for 'populations'
 # in the STACKS papers
 # Comment out the options required to run your analysis
@@ -56,12 +55,10 @@ min_maf="-a 0.0"         # Specify a minimum minor allele frequency required
 #write_random_snp="--write_random_snp"  # Restrict data analysis to one random
                                         # SNP per locus.
 #Merging and Phasing:
-
-e="-e sbfI" #/    -e,--renz — restriction enzyme name.
-m="--merge_sites" #  — merge loci that were produced from the same restriction enzyme cutsite (requires reference-aligned data).
+#Paired-end only !! ##
+#e="-e sbfI" #/    -e,--renz — restriction enzyme name.
+#m="--merge_sites" #  — merge loci that were produced from the same restriction enzyme cutsite (requires reference-aligned data).
 #--merge_prune_lim — when merging adjacent loci, if at least X% samples posses both loci prune the remaining samples out of the analysis.
-
-
 
 #Fstats:
 #fstats="--fstats"     # Enable SNP and haplotype-based F statistics
