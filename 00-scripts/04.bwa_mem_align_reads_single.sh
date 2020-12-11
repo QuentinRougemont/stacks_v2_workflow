@@ -36,7 +36,7 @@ do
     bwa mem -t "$NCPU"  \
         -R $ID $GENOMEFOLDER/$GENOME \
 	$DATAFOLDER/"$name"  2> /dev/null |
-        samtools view -Sb -q 20 -F 4 -F 256 -F 2048 - |
-    samtools sort - > $OUTFOLDER/"${name%.fastq.gz}".bam
-    #samtools index $DATAFOLDER/"${name%.fastq.gz}".sorted.bam
+        samtools view -Sb -q 20 -F 4 -F 256 -F 2048 - |\
+    samtools sort - > $OUTFOLDER/"${name%.fastq.gz}".sorted.bam
+    samtools index $DATAFOLDER/"${name%.fastq.gz}".sorted.bam
 done
