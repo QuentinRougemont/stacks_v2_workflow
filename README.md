@@ -103,3 +103,17 @@ For demographic reconstruction it is important to avoid using any MAF/MAC as low
 Depending on the goal of the study additional filter may include: 
 * HWE/Fis filtering
 * MAF/MAC filtering 
+
+here is an example command for filtering that would need custom adjusdment:
+vcftools --vcf input.vcf \
+  --maf 0.001 \
+  --max-alleles 2 \
+  --maxDP 100 \
+  --max-meanDP 100 \
+  --min-alleles 2 \
+  --minDP 5 \
+  --min-meanDP 10 \
+  --max-missing 0.95 \
+  --out output \
+  --recode
+
