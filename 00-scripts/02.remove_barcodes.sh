@@ -9,7 +9,7 @@ NCPU=8 #number of CPU, can be set to any number
 mkdir 02-data/cutadapt 02-data/cutadapt_2
 if [ ! -d "666-log/" ]  ; then  
     echo "creation du dossier" ; 
-    mkdir 666-log/; 
+    mkdir 666-log; 
 fi
 
 input1=$( ls 02-data/*R1.*gz | sed -e 's/02-data\///g' )
@@ -33,7 +33,7 @@ parallel -j $NCPU cutadapt $adapter $adapter2 \
 	$output2/"${input1%.R1.fq.gz}".R2.fq.gz \
         $input2 \
         $error \
-        $m  &>> /666-log/"$TIMESTAMP"_cutadapt_"${i%.fq.gz}".log
+        $m  &>> ./666-log/"$TIMESTAMP"_cutadapt_"${i%.fq.gz}".log
         #$discard_trimmed $untrimmed_output $discard_short \
 
 #All information on cutadapt is available here: http://cutadapt.readthedocs.org/en/stable/guide.html

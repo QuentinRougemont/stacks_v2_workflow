@@ -1,7 +1,10 @@
 #!/bin/bash
 
+#WARNING: OLD SCRIPT PROBABLY NO LONGER NEEDED FOR ILLUMINA RAD DATA
+
 #miniscript to prepare the architecture, move the file and filter them according to some purity criterion
 #We work on a total of 8 library, we have eight fastq.gz file for the Read1 and eight fastq.gz for the read2
+
 #TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 
 #Organise and prepare the file
