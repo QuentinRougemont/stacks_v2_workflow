@@ -25,10 +25,9 @@ other requirements:
 
 ```gnu parallel```  
 
+other common commands like awk/grep etc are useful.
 
-
-## First step -- quality check : 
-
+## First step -- quality check:
 
 you can check your rad data with fastqc first: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
@@ -63,8 +62,9 @@ For PAIRED-END DATA:
 For SINGLE-END DATA:
 ``` .//00-scripts/04.bwa_mem_align_reads_single.sh ```
 
-#it is also a good practice at this stage to look at the mapping rate by counting the number of read in each individual fastq and looking at the total number of read mapped,
-individuals with too few reads (e.g mean-2*SD) or low mapping rate should be removed !
+it is also a good practice at this stage to look at the mapping rate by counting the number of read in each individual fastq and looking at the total number of read mapped. 
+
+Individuals with too few reads (e.g mean-2*SD) or low mapping rate should be removed !
 some script to count the number of read and mapped reads are present in this folder: ```https://github.com/QuentinRougemont/utility_scripts/tree/master/07.random_scripts```
 
 
@@ -76,8 +76,14 @@ some script to count the number of read and mapped reads are present in this fol
 #additional custom parameters can be used for paired-end data to exploit haplotype
 
 ## Produce vcf file:
-then run population to produce a final vcf:
+
+then run population to produce a final vcf:  
 ```./00-scripts/06.populations.sh ```
+importants parameters includes :
+  -p the min-populations or minimum number of populations a locus must be present in to process a locus.
+  -r,--min-samples-per-pop [float]: minimum percentage of individuals in a population required to process a locus for that population.
+  -R,--min-samples-overall [float]: minimum percentage of individuals across populations required to process a locus.
+
 
 ## Filtering : 
 In general I filter the script with vcftools/R/awk commands
