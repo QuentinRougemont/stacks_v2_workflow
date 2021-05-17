@@ -4,7 +4,8 @@ This repo contains most major script to perform a RADseq Analysis using the new 
 
 ## WARNING
 SCRIPTS ARE OLD AND NOT REALLY UPDATED ANYMORE
-For updated scripts see: [https://github.com/enormandeau/stacks_workflow](https://github.com/enormandeau/stacks_workflow)
+For updated scripts see: [https://github.com/enormandeau/stacks_workflow](https://github.com/enormandeau/stacks_workflow)  
+
 Some update still needs to be done and I hope to find some time to add more scripts for pop. gen analysis in addition to script for RADseq genotyping and filtering. 
 As some scripts may be missing do not hesitate to contact me at: quentinrougemont@orange.fr
 
@@ -25,7 +26,7 @@ other requirements:
 
 ```gnu parallel```  
 
-other common commands like awk/grep etc are useful.
+other common commands like awk/grep etc are useful.  
 
 ## First step -- quality check:
 
@@ -69,20 +70,22 @@ some script to count the number of read and mapped reads are present in this fol
 
 
 ## CALL SNP:
-#simply run gstacks. Adjust parameters within the scripts
+#simply run gstacks. Adjust parameters within the scripts :  
+
 ./00-scripts/05.gstacks.sh 
 
+
 #here the most important are the parameters of the marukilow algorithm
-#additional custom parameters can be used for paired-end data to exploit haplotype
+#additional custom parameters can be used for paired-end data to exploit haplotype.  
 
 ## Produce vcf file:
 
-then run population to produce a final vcf:  
+Then run population to produce a final vcf:  
 ```./00-scripts/06.populations.sh ```
 importants parameters includes :
   -p the min-populations or minimum number of populations a locus must be present in to process a locus.
   -r,--min-samples-per-pop [float]: minimum percentage of individuals in a population required to process a locus for that population.
-  -R,--min-samples-overall [float]: minimum percentage of individuals across populations required to process a locus.
+  -R,--min-samples-overall [float]: minimum percentage of individuals across populations required to process a locus.  
 
 
 ## Filtering : 
