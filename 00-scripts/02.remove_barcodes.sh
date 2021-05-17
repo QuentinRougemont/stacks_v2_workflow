@@ -28,11 +28,13 @@ then
 fi
 
 ls -1 02-data/*R1
-parallel -j $NCPU cutadapt $adapter $adapter2 $output/$input1 $output2/"${input1%.R1.fq.gz}".R2.fq.gz 
-        {} $input2 
-        $error 
-        #$discard_trimmed $untrimmed_output $discard_short
+parallel -j $NCPU cutadapt $adapter $adapter2 \
+	$output/$input1 \
+	$output2/"${input1%.R1.fq.gz}".R2.fq.gz \
+        $input2 \
+        $error \
         $m  &>> /666-log/"$TIMESTAMP"_cutadapt_"${i%.fq.gz}".log
+        #$discard_trimmed $untrimmed_output $discard_short \
 
 #All information on cutadapt is available here: http://cutadapt.readthedocs.org/en/stable/guide.html
 #can be cloned from github at: git clone https://github.com/marcelm/cutadapt.git
