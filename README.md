@@ -23,22 +23,28 @@ other requirements:
  
 ```linux```  
 
-```gnu parallel```
+```gnu parallel```  
 
 
 
-## First step -- quality check
+## First step -- quality check : 
+
 
 you can check your rad data with fastqc first: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-then I used the script `00-scripts/01.prepare_data.sh` to move the raw data and perform some cleaning. The cleaning step using some bash code is probably no-longer needed in any Illumina RADseq  project.
+then I used the script:   
+`00-scripts/01.prepare_data.sh`  
+to move the raw data and perform some cleaning.  
+The cleaning step using some bash code is probably no-longer needed in any Illumina RADseq  project.  
 
 ## Remove barcode and trim data:
 
-you can simply run cutadapt after installing it:
+you can simply run cutadapt after installing it:  
+
 ```./00-scripts/02.remove_barcodes.sh```
 
-you'll have to change several parameters according to the length of your read, etc. see details in the scripts
+you'll have to change several parameters according to the length of your read, etc.  
+See details in the scripts
 
 ## Demultiplexing the data:
 
@@ -49,7 +55,7 @@ the option ```barcode="your_barcodes.txt" ``` is important and you must provide 
 
 Here you can assess the quality of the data for each individual again using fastqc  
 
-##Align data :
+##  Align data:
 simply use BWA-MEM:
 For PAIRED-END DATA: 
 ``` ./00-scripts/04.bwa_mem_align_reads_pe.sh ```
@@ -61,16 +67,19 @@ For SINGLE-END DATA:
 individuals with too few reads (e.g mean-2*SD) or low mapping rate should be removed !
 some script to count the number of read and mapped reads are present in this folder: ```https://github.com/QuentinRougemont/utility_scripts/tree/master/07.random_scripts```
 
-### CALL SNP:
+
+## CALL SNP:
 #simply run gstacks. Adjust parameters within the scripts
 ./00-scripts/05.gstacks.sh 
 
 #here the most important are the parameters of the marukilow algorithm
 #additional custom parameters can be used for paired-end data to exploit haplotype
 
-#then run population to produce a final vcf:
+## Produce vcf file:
+then run population to produce a final vcf:
 ```./00-scripts/06.populations.sh ```
 
+## Filtering : 
 In general I filter the script with vcftools/R/awk commands
 
 important filtering criteria are : 
