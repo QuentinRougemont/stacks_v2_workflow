@@ -3,8 +3,8 @@
 # Global variables
 GENOMEFOLDER="08-genome"
 GENOME="Lp2_sperm-8.fa"
-DATAFOLDER="04-all_samples"
-OUTFOLDER="03-demultiplex"
+DATAFOLDER="03-demultiplex"
+OUTFOLDER="04-bam_files"
 if [ ! -d ${OUTFOLDER} ]
 then
     echo "creating bam folder"
@@ -21,8 +21,6 @@ fi
 
 # Index genome if not alread done
 # bwa index -p $GENOMEFOLDER/$GENOME $GENOMEFOLDER/$GENOME.fasta
-#verify that your sample contain the R1 and R2 pattern
-#verify that the samtools flag satisfy your criterion
 
 for file in $(ls -1 $DATAFOLDER/*.fastq.gz)
 do

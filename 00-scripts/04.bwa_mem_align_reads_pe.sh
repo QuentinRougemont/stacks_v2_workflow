@@ -37,8 +37,8 @@ do
     # Align reads 1 step
     bwa mem -t "$NCPU"  \
         -R $ID $GENOMEFOLDER/$GENOME \
-	$DATAFOLDER/"$name" $DATAFOLDER/"$name2" 2> /dev/null |
-        samtools view -Sb -q 20 |
+	$DATAFOLDER/"$name" $DATAFOLDER/"$name2" 2> /dev/null |\
+        samtools view -Sb -q 20 |\
     samtools sort - > $OUTFOLDER/"${name%.fastq.gz}".bam
     #samtools index $DATAFOLDER/"${name%.fastq.gz}".sorted.bam
 done
