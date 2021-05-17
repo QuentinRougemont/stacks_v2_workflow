@@ -37,7 +37,7 @@ t="-t 8"                 #--threads — number of threads to use (default: 1)
 #Model options:
 m="--model marukilow"    #model to use to call variants and genotypes; one of marukilow (default), marukihigh, or snp
 v="--var-alpha 0.05"     #alpha threshold for discovering SNPs (default: 0.05 for marukilow)
-gt="--gt-alpha 0.05"     #alpha threshold for calling genotypes (default: 0.05)
+gt="--gt-alpha 0.01"     #alpha threshold for calling genotypes (default: 0.05)
 
 #Advanced options: (De novo mode)
 km="--kmer-length 31"       # kmer length for the de Bruijn graph (default: 31, max. 31)

@@ -16,3 +16,10 @@ REF of stacks here
 ```stacks``` Download [stacks] (http://catchenlab.life.illinois.edu/stacks/) (see details of installation on the website)
 
 ```vcftools``` Download [vcftools] (http://vcftools.sourceforge.net/)
+
+other requirements: 
+```linux```  
+
+```gnu parallel```
+
+

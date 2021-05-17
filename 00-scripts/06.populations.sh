@@ -1,9 +1,7 @@
 #!/bin/bash
-
 #script to launch populations in stacks v2
 #LAST UPDATE: 15-04-2019
 #module load gcc/6.2.0
-#
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 
 # Copy script as it was run
