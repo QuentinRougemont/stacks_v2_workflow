@@ -28,7 +28,7 @@ other requirements:
 
 other common commands like awk/grep etc are useful.  
 
-## First step -- quality check:
+## First step quality check:
 
 you can check your rad data with fastqc first: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
@@ -58,19 +58,19 @@ Here you can assess the quality of the data for each individual again using fast
 ##  Align data:
 simply use BWA-MEM:
 For PAIRED-END DATA: 
-``` ./00-scripts/04.bwa_mem_align_reads_pe.sh ```
+``` ./00-scripts/04.bwa_mem_align_reads_pe.sh ``` 
 
 For SINGLE-END DATA:
-``` .//00-scripts/04.bwa_mem_align_reads_single.sh ```
+``` .//00-scripts/04.bwa_mem_align_reads_single.sh ``` 
 
 it is also a good practice at this stage to look at the mapping rate by counting the number of read in each individual fastq and looking at the total number of read mapped. 
 
 Individuals with too few reads (e.g mean-2*SD) or low mapping rate should be removed !
-some script to count the number of read and mapped reads are present in this folder: ```https://github.com/QuentinRougemont/utility_scripts/tree/master/07.random_scripts```
-
+some script to count the number of read and mapped reads are present in this folder: ```https://github.com/QuentinRougemont/utility_scripts/tree/master/07.random_scripts```  
 
 ## CALL SNP:
-#simply run gstacks. Adjust parameters within the scripts :  
+
+simply run gstacks. Adjust parameters within the scripts :  
 
 ./00-scripts/05.gstacks.sh 
 
