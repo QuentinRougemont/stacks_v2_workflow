@@ -6,35 +6,30 @@
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 NCPU=8 #number of CPU, can be set to any number
 
-mkdir 02-data/cutadapt 02-data/cutadapt_2
-if [ ! -d "666-log/" ]  ; then  
+mkdir 02-data/trimmed
+if [ ! -d "99-logfolder/" ]  ; then  
     echo "creation du dossier" ; 
-    mkdir 666-log; 
+    mkdir 99-logfolder; 
 fi
 
-input1=$( ls 02-data/*R1.*gz | sed -e 's/02-data\///g' )
-#input2=$( ls 02-data/*R2.*gz | sed -e 's/02-data\///g' )
-input2="ls -1 02-data/*R2.gz"
-output="-o /02-data/cutadapt"
-output2="-p /02-data/cutadapt"
-adapter="-a AGATCGGAAGAGCG" #name of the first adapter
-adapter2="-A AGACCGATCAGAAC" #name of the second adapter 
+adapters1="-a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC"    #name of the first adapter
+adapters2="-A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"     #name of the second adapter
 error="-e 0.1" #error rate 
-m="-m 95" #length at which we want to trim the data
+m="-m 130" #length at which we want to trim the data
 
 if [[ -z "$NCPU" ]]
 then
-   NCPU=1
+   NCPU=8
 fi
 
-ls -1 02-data/*R1
-parallel -j $NCPU cutadapt $adapter $adapter2 \
-	$output/$input1 \
-	$output2/"${input1%.R1.fq.gz}".R2.fq.gz \
-        $input2 \
-        $error \
-        $m  &>> ./666-log/"$TIMESTAMP"_cutadapt_"${i%.fq.gz}".log
-        #$discard_trimmed $untrimmed_output $discard_short \
+rm 99-logfolder/"$TIMESTAMP"_02_rmbarcode"${i%.fastq.gz}".log 2> /dev/null
+ls -1 02-data/*R1.fastq.gz |perl -pe 's/R[12]\.fastq\.gz//g' |
+parallel -j $NCPU cutadapt  $adapters1 $adapters2 \
+          -o 02-data/trimmed/{/}R1.fastq.gz -p 02-data/trimmed/{/}R2.fastq.gz \
+          "$error" \
+          "$m" \
+          02-raw/{/}R1.fastq.gz 02-raw/{/}R2.fastq.gz '2>&1' '>>' 99-logfolder/"$TIMESTAMP"_02_rmbarcode"${i%.fastq.gz}".log
+
 
 #All information on cutadapt is available here: http://cutadapt.readthedocs.org/en/stable/guide.html
 #can be cloned from github at: git clone https://github.com/marcelm/cutadapt.git
